@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 9ff984cef5e0ba640af6258f6f22c613
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Reagan game sprites 2_0
+    21300002: Reagan game sprites 2_1
+    21300004: Reagan game sprites 2_2
+    21300006: Reagan game sprites 2_3
+    21300008: Reagan game sprites 2_4
+    21300010: Reagan game sprites 2_5
+    21300012: Reagan game sprites 2_6
+    21300014: Reagan game sprites 2_7
+    21300016: Reagan game sprites 2_8
+    21300018: Reagan game sprites 2_9
+    21300020: Reagan game sprites 2_10
+    21300022: Reagan game sprites 2_11
+    21300024: Reagan game sprites 2_12
+    21300026: Reagan game sprites 2_13
+    21300028: Reagan game sprites 2_14
+    21300030: Reagan game sprites 2_15
+    21300032: Reagan game sprites 2_16
+    21300034: Reagan game sprites 2_17
+    21300036: Reagan game sprites 2_18
+    21300038: Reagan game sprites 2_19
+    21300040: Reagan game sprites 2_20
+    21300042: Reagan game sprites 2_21
+    21300044: Reagan game sprites 2_22
+    21300046: Reagan game sprites 2_23
+    21300048: Reagan game sprites 2_24
+    21300050: Reagan game sprites 2_25
+    21300052: Reagan game sprites 2_26
+    21300054: Reagan game sprites 2_27
+    21300056: Reagan game sprites 2_28
+    21300058: Reagan game sprites 2_29
+    21300060: Reagan game sprites 2_30
+    21300062: Reagan game sprites 2_31
+    21300064: Reagan game sprites 2_32
+    21300066: Reagan game sprites 2_33
+    21300068: Reagan game sprites 2_34
+    21300070: Reagan game sprites 2_35
+    21300072: Reagan game sprites 2_36
+    21300074: Reagan game sprites 2_37
+    21300076: Reagan game sprites 2_38
+    21300078: Reagan game sprites 2_39
+    21300080: Reagan game sprites 2_40
+    21300082: Reagan game sprites 2_41
+    21300084: Reagan game sprites 2_42
+    21300086: Reagan game sprites 2_43
+    21300088: Reagan game sprites 2_44
+    21300090: Reagan game sprites 2_45
+    21300092: Reagan game sprites 2_46
+    21300094: Reagan game sprites 2_47
+    21300096: Reagan game sprites 2_48
+    21300098: Reagan game sprites 2_49
+    21300100: Reagan game sprites 2_50
+    21300102: Reagan game sprites 2_51
+    21300104: Reagan game sprites 2_52
+    21300106: Reagan game sprites 2_53
+    21300108: Reagan game sprites 2_54
+    21300110: Reagan game sprites 2_55
+    21300112: Reagan game sprites 2_56
+    21300114: Reagan game sprites 2_57
+    21300116: Reagan game sprites 2_58
+    21300118: Reagan game sprites 2_59
+    21300120: Reagan game sprites 2_60
+    21300122: Reagan game sprites 2_61
+    21300124: Reagan game sprites 2_62
+    21300126: Reagan game sprites 2_63
+    21300128: Reagan game sprites 2_64
+    21300130: Reagan game sprites 2_65
+    21300132: Reagan game sprites 2_66
+    21300134: Reagan game sprites 2_67
+    21300136: Reagan game sprites 2_68
+    21300138: Reagan game sprites 2_69
+    21300140: Reagan game sprites 2_70
+    21300142: Reagan game sprites 2_71
+    21300144: Reagan game sprites 2_72
+    21300146: Reagan game sprites 2_73
+    21300148: Reagan game sprites 2_74
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Reagan game sprites 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 707
+        width: 827
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Reagan game sprites 2_1
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 521
+        width: 894
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

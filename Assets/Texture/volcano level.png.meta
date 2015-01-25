@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: c0104be007b34ad4bb2344fe3adf558d
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: volcano level_0
+    21300002: volcano level_1
+    21300004: volcano level_2
+    21300006: volcano level_3
+    21300008: volcano level_4
+    21300010: volcano level_6
+    21300012: volcano level_7
+    21300014: volcano level_8
+    21300016: volcano level_9
+    21300018: volcano level_10
+    21300020: volcano level_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: volcano level_0
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 721
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_1
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 724
+        width: 102
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 724
+        width: 102
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_3
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 730
+        width: 102
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_4
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 374
+        width: 602
+        height: 503
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_6
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 599
+        width: 99
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_7
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 599
+        width: 102
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_8
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 599
+        width: 101
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_9
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 599
+        width: 103
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_10
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 372
+        width: 502
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: volcano level_11
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 153
+        width: 882
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
