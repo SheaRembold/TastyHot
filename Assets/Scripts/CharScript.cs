@@ -29,6 +29,8 @@ public class CharScript : MonoBehaviour {
 	bool gradius = false;
 	int vertMov;
 	int horzMov;
+	bool canRight = true;
+	bool canLeft = true;
 
 	public GameObject bullet;
 
@@ -36,7 +38,14 @@ public class CharScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if(health <= 0){
+			Application.LoadLevel ("selectLevel");
+		}
+
 		falling = true;
+		canRight = true;
+		canLeft = true;
+
 		hitTest = Physics2D.CircleCastAll (transform.position, 0.6f, -Vector3.up);
 		foreach (RaycastHit2D hit in hitTest) {
 			hitInfo (hit);
@@ -75,10 +84,7 @@ public class CharScript : MonoBehaviour {
 			charge = 0;
 		}
 
-        if (gradius)
-            ssParticle.emissionRate = charge * 500;
-        else
-            ssParticle.emissionRate = charge * 100;
+        ssParticle.emissionRate = charge * 100;
 
 		//Movement
 		if (gradius) {
@@ -104,12 +110,12 @@ public class CharScript : MonoBehaviour {
 		} else {
 			//Normal Movement
 			//falling = true;
-			if (Input.GetButton ("Right")) {
+			if (Input.GetButton ("Right") && canRight) {
 				speed += acc;
                 tail.parent = transform;
 				transform.LookAt (transform.position + Vector3.back);
                 tail.parent = transform.parent;
-			} else if (Input.GetButton ("Left")) {
+			} else if (Input.GetButton ("Left") && canLeft) {
 				speed -= acc;
                 tail.parent = transform;
 				transform.LookAt (transform.position + Vector3.forward);
@@ -124,10 +130,10 @@ public class CharScript : MonoBehaviour {
 
 			if (Mathf.Abs (speed) < 0.2f) {
 				speed = 0;
-			} else if (speed > 4) {
-				speed = 4;
-			} else if (speed < -4) {
-				speed = -4;
+			} else if (speed > 6) {
+				speed = 6;
+			} else if (speed < -6) {
+				speed = -6;
 			}
 
             ball.Spin(speed);
@@ -160,38 +166,43 @@ public class CharScript : MonoBehaviour {
 	}
 
 	void hitInfo(RaycastHit2D hit){
-        if (hit.collider != null && hit.distance <= 0.1f)
-        {
+		if (hit.collider != null && hit.distance <= 0.1f) {
             if (hit.collider.tag == "Platform")
             {
-                transform.parent.parent = hit.collider.transform;
+				if(hit.point.y < transform.position.y){
+					falling = false;
+					//transform.parent = hit.collider.transform;
+					grav = 0;
+				}else if(hit.point.y > transform.position.y){
+					grav = 0;
+				}else if(hit.point.x > transform.position.x){
+					speed = -1;
+					canRight = false;
+					
+				}else if(hit.point.x < transform.position.x){
+					speed = 1;
+					canLeft = false;
+				}
+               /*transform.parent.parent = hit.collider.transform;
 				falling = false;
-				grav = 0;
+				grav = 0;*/
 			}
 
-			if(hit.collider.tag == "Enemy" && !invinc){
+			if((hit.collider.tag == "Enemy" || hit.collider.tag == "Brain") && !invinc){
 				health--;
 				noHit = 6;
 				invinc = true;
 				Debug.Log ("I'm hit!  "+health);
 			}
 
+			if(hit.collider.tag == "Lava"){
+				health -= 3;
+			}
+
 			if(hit.collider.tag == "Coin"){
 				Destroy (hit.collider.gameObject);
 				Debug.Log ("Coin Get!");
 			}
-
-            if (hit.collider.tag == "Portal")
-            {
-                hit.collider.gameObject.GetComponent<CompleteLevel>().StartClosing(transform.parent.gameObject);
-                Destroy(this);
-            }
-            if (hit.collider.tag == "WhaleRide")
-            {
-                hit.collider.transform.parent = transform;
-                hit.collider.tag = "Untagged";
-                gradius = true;
-            }
 		}
 	}
 }
