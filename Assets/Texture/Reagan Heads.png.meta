@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 0b3e3e73581498340ad2025199a2b55e
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Reagan Heads_0
+    21300002: Reagan Heads_1
+    21300004: Reagan Heads_5
+    21300006: Reagan Heads_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,7 +31,7 @@ TextureImporter:
     filterMode: -1
     aniso: 16
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -42,6 +46,46 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Reagan Heads_0
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 637
+        width: 283
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Reagan Heads_1
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 580
+        width: 557
+        height: 550
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Reagan Heads_5
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 168
+        width: 329
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Reagan Heads_3
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 160
+        width: 286
+        height: 319
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

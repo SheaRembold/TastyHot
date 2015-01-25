@@ -12,6 +12,12 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (player == null)
+        {
+            enabled = false;
+            return;
+        }
+
 		Vector3 charPos = camera.WorldToViewportPoint (player.transform.position);
 
 		if (charPos.x > 0.7f) {

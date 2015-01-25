@@ -4,7 +4,7 @@ using System.Collections;
 public class PlaneManager : MonoBehaviour
 {
     public GameObject plane;
-    float fireRate = 2f;
+    float fireRate = 1.5f;
     float sinceFire = 0;
 
     void Update()
