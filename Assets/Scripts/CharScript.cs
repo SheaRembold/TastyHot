@@ -3,13 +3,6 @@ using System.Collections;
 
 public class CharScript : MonoBehaviour {
 
-    public Rotate ball;
-    public Transform tail;
-    public ParticleSystem groundParticle;
-    public ParticleSystem ssParticle;
-
-    public AudioClip jumpSound;
-
 	// Use this for initialization
 	void Start () {
 	
@@ -29,6 +22,8 @@ public class CharScript : MonoBehaviour {
 	bool gradius = false;
 	int vertMov;
 	int horzMov;
+	bool canRight = true;
+	bool canLeft = true;
 
 	public GameObject bullet;
 
@@ -37,13 +32,13 @@ public class CharScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		falling = true;
+		canRight = true;
+		canLeft = true;
+
 		hitTest = Physics2D.CircleCastAll (transform.position, 0.6f, -Vector3.up);
 		foreach (RaycastHit2D hit in hitTest) {
 			hitInfo (hit);
 		}
-
-        if (falling)
-            transform.parent.parent = null;
 
 		//Invincible Frames
 		if (invinc) {
@@ -69,13 +64,9 @@ public class CharScript : MonoBehaviour {
 					charge = 0;
 				}
 			}
-		}
-        else
-        {
+		}else{
 			charge = 0;
 		}
-
-        ssParticle.emissionRate = charge * 100;
 
 		//Movement
 		if (gradius) {
@@ -101,16 +92,16 @@ public class CharScript : MonoBehaviour {
 		} else {
 			//Normal Movement
 			//falling = true;
-			if (Input.GetButton ("Right")) {
+			if (Input.GetButton ("Right") && canRight) {
+				Camera.main.transform.parent = null;
 				speed += acc;
-                tail.parent = transform;
-				transform.LookAt (transform.position + Vector3.back);
-                tail.parent = transform.parent;
-			} else if (Input.GetButton ("Left")) {
-				speed -= acc;
-                tail.parent = transform;
 				transform.LookAt (transform.position + Vector3.forward);
-                tail.parent = transform.parent;
+				Camera.main.transform.parent = transform;
+			} else if (Input.GetButton ("Left") && canLeft) {
+				Camera.main.transform.parent = null;
+				speed -= acc;
+				transform.LookAt (transform.position + Vector3.back);
+				Camera.main.transform.parent = transform;
 			} else {
 				if (speed > 0) {
 					speed -= acc;
@@ -127,20 +118,14 @@ public class CharScript : MonoBehaviour {
 				speed = -4;
 			}
 
-            ball.Spin(speed);
-            if (falling)
-                groundParticle.emissionRate = 0;
-            else
-                groundParticle.emissionRate = Mathf.Abs(speed) * 10;
-
 			//Jumping
 			if (Input.GetButton ("Jump") && falling == false) {
 				grav = 16f;
 				falling = true;
-                audio.PlayOneShot(jumpSound);
 			}
 			
 			if (falling) {
+				transform.parent = null;
 				grav -= acc;
 				if (grav < -16f) {
 					grav = -16f;
@@ -149,20 +134,25 @@ public class CharScript : MonoBehaviour {
 
 			transform.position += new Vector3(speed, grav, 0)*Time.deltaTime;
 		}
-
-        if (transform.position.y < -5)
-        {
-            Application.LoadLevel("selectLevel");
-        }
 	}
 
 	void hitInfo(RaycastHit2D hit){
 		if (hit.collider != null && hit.distance <= 0.1f) {
-            if (hit.collider.tag == "Platform")
-            {
-                transform.parent.parent = hit.collider.transform;
-				falling = false;
-				grav = 0;
+			if(hit.collider.tag == "Platform"){
+				if(hit.point.y < transform.position.y){
+					falling = false;
+					transform.parent = hit.collider.transform;
+					grav = 0;
+				}else if(hit.point.y > transform.position.y){
+					grav = 0;
+				}else if(hit.point.x > transform.position.x){
+					speed = -1;
+					canRight = false;
+
+				}else if(hit.point.x < transform.position.x){
+					speed = 1;
+					canLeft = false;
+				}
 			}
 
 			if(hit.collider.tag == "Enemy" && !invinc){
