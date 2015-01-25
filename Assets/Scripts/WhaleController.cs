@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WhaleController : MonoBehaviour
 {
-    enum SprayState { Between, Up, Pause, Down };
+    enum SprayState { Between, Warn, Up, Pause, Down };
 
     public Vector2 speed = new Vector2(1f, 1f);
     float dirX = 1;
@@ -15,7 +15,9 @@ public class WhaleController : MonoBehaviour
     float offset;
     public float hoverSpeed = 1f;
     public GameObject spray;
+    public GameObject sprayTop;
     public float betweenSpray = 5f;
+    public float sprayWarnTime = 1f;
     public float sprayMoveTime = 1f;
     public float sprayPauseTime = 1f;
     float sprayStateTime = 0;
@@ -46,6 +48,16 @@ public class WhaleController : MonoBehaviour
             sprayStateTime += Time.deltaTime;
             if (sprayStateTime >= betweenSpray)
             {
+                sprayState = SprayState.Warn;
+                sprayStateTime = 0;
+                sprayTop.SetActive(true);
+            }
+        }
+        else if (sprayState == SprayState.Warn)
+        {
+            sprayStateTime += Time.deltaTime;
+            if (sprayStateTime >= sprayWarnTime)
+            {
                 sprayState = SprayState.Up;
                 sprayStateTime = 0;
             }
@@ -54,7 +66,7 @@ public class WhaleController : MonoBehaviour
         {
             sprayStateTime += Time.deltaTime;
             spray.transform.localScale = new Vector3(spray.transform.localScale.x, Mathf.Lerp(0, sprayHeight, sprayStateTime / sprayMoveTime), 1f);
-            //spray.transform.localPosition = new Vector3(spray.transform.localPosition.x, spray.transform.localScale.y / 2f + 0.5f, 0f);
+            sprayTop.transform.localPosition = new Vector3(sprayTop.transform.localPosition.x, spray.transform.localPosition.y + spray.renderer.bounds.size.y, 0f);
             if (sprayStateTime >= sprayMoveTime)
             {
                 sprayState = SprayState.Pause;
@@ -74,11 +86,12 @@ public class WhaleController : MonoBehaviour
         {
             sprayStateTime += Time.deltaTime;
             spray.transform.localScale = new Vector3(spray.transform.localScale.x, Mathf.Lerp(sprayHeight, 0, sprayStateTime / sprayMoveTime), 1f);
-            //spray.transform.localPosition = new Vector3(spray.transform.localPosition.x, spray.transform.localScale.y / 2f + 0.5f, 0f);
+            sprayTop.transform.localPosition = new Vector3(sprayTop.transform.localPosition.x, spray.transform.localPosition.y + spray.renderer.bounds.size.y, 0f);
             if (sprayStateTime >= sprayMoveTime)
             {
                 sprayState = SprayState.Between;
                 sprayStateTime = 0;
+                sprayTop.SetActive(false);
             }
         }
     }

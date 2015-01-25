@@ -75,7 +75,10 @@ public class CharScript : MonoBehaviour {
 			charge = 0;
 		}
 
-        ssParticle.emissionRate = charge * 100;
+        if (gradius)
+            ssParticle.emissionRate = charge * 500;
+        else
+            ssParticle.emissionRate = charge * 100;
 
 		//Movement
 		if (gradius) {
@@ -157,7 +160,8 @@ public class CharScript : MonoBehaviour {
 	}
 
 	void hitInfo(RaycastHit2D hit){
-		if (hit.collider != null && hit.distance <= 0.1f) {
+        if (hit.collider != null && hit.distance <= 0.1f)
+        {
             if (hit.collider.tag == "Platform")
             {
                 transform.parent.parent = hit.collider.transform;
@@ -176,6 +180,18 @@ public class CharScript : MonoBehaviour {
 				Destroy (hit.collider.gameObject);
 				Debug.Log ("Coin Get!");
 			}
+
+            if (hit.collider.tag == "Portal")
+            {
+                hit.collider.gameObject.GetComponent<CompleteLevel>().StartClosing(transform.parent.gameObject);
+                Destroy(this);
+            }
+            if (hit.collider.tag == "WhaleRide")
+            {
+                hit.collider.transform.parent = transform;
+                hit.collider.tag = "Untagged";
+                gradius = true;
+            }
 		}
 	}
 }

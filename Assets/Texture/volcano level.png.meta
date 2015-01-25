@@ -137,20 +137,10 @@ TextureImporter:
     - name: volcano level_9
       rect:
         serializedVersion: 2
-        x: 449
-        y: 599
+        x: 455
+        y: 600
         width: 103
         height: 102
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: volcano level_10
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 372
-        width: 502
-        height: 203
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class BrainController : MonoBehaviour
 {
+    public GameObject deathPart;
     public AudioClip merge;
     public AudioClip split;
     public float speed = 1f;
@@ -117,14 +118,17 @@ public class BrainController : MonoBehaviour
         mergingBrains.Add(brain);
         startPos.Add(brain.transform.position);
         startScale.Add(brain.transform.localScale);
-        mergedScale += brain.transform.localScale * scaleFactor;
+        if (brain.splitting)
+            mergedScale += brain.splitTargetScale * scaleFactor;
+        else
+            mergedScale += brain.transform.localScale * scaleFactor;
     }
 
     public void AbortMerge()
     {
         float sep = mergedScale.x / (2 * scaleFactor) + 1f;
         float begin = -sep * (mergingBrains.Count - 1) / 2f;
-        for (int i = 1; i < mergingBrains.Count; i++)
+        for (int i = 0; i < mergingBrains.Count; i++)
         {
             mergingBrains[i].merger = null;
             mergingBrains[i].splitting = true;
@@ -155,7 +159,7 @@ public class BrainController : MonoBehaviour
         if (col.gameObject.tag == "Brain")
         {
             BrainController other = col.gameObject.GetComponent<BrainController>();
-            if (merger == null && !splitting || !other.splitting)
+            if (merger == null && (!splitting || !other.splitting))
             {
                 if (other.merger == null)
                 {
@@ -165,11 +169,14 @@ public class BrainController : MonoBehaviour
                     AddMergingBrain(this);
                     merger = this;
                     audio.PlayOneShot(merge);
+                    splitting = false;
                 }
                 else
                 {
                     other.merger.AddMergingBrain(this);
+                    merger = other.merger;
                     audio.PlayOneShot(merge);
+                    splitting = false;
                 }
             }
         }
@@ -182,8 +189,9 @@ public class BrainController : MonoBehaviour
             }
             else
             {
-                if (transform.localScale.x <= 0.5f)
+                if (transform.localScale.x <= 0.7f)
                 {
+                    GameObject.Instantiate(deathPart, transform.position, Quaternion.identity);
                     GameObject.Destroy(gameObject);
                 }
                 else
