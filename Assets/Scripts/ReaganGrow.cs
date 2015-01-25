@@ -10,7 +10,7 @@ public class ReaganGrow : MonoBehaviour
     float tillNext;
     float sinceLast;
     bool countingDown;
-    float countdown = 3;
+    float countdown = 10;
 
     void Start()
     {
