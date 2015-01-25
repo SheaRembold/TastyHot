@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class BrainController : MonoBehaviour
 {
+    public AudioClip merge;
+    public AudioClip split;
     public float speed = 1f;
     Vector3 dir = new Vector3(1, 0, 0);
     float sinceChange;
@@ -162,10 +164,12 @@ public class BrainController : MonoBehaviour
                     timeMerging = 0;
                     AddMergingBrain(this);
                     merger = this;
+                    audio.PlayOneShot(merge);
                 }
                 else
                 {
                     other.merger.AddMergingBrain(this);
+                    audio.PlayOneShot(merge);
                 }
             }
         }
@@ -174,10 +178,11 @@ public class BrainController : MonoBehaviour
             if (merger != null)
             {
                 merger.AbortMerge();
+                audio.PlayOneShot(split);
             }
             else
             {
-                if (transform.localScale.x < 0.25f)
+                if (transform.localScale.x <= 0.5f)
                 {
                     GameObject.Destroy(gameObject);
                 }
@@ -186,6 +191,7 @@ public class BrainController : MonoBehaviour
                     GameObject obj = GameObject.Instantiate(gameObject) as GameObject;
                     obj.GetComponent<BrainController>().Split(1);
                     Split(-1);
+                    audio.PlayOneShot(split);
                 }
                 col.gameObject.tag = "Untagged";
                 GameObject.Destroy(col.gameObject);

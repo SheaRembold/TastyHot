@@ -8,6 +8,8 @@ public class CharScript : MonoBehaviour {
     public ParticleSystem groundParticle;
     public ParticleSystem ssParticle;
 
+    public AudioClip jumpSound;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -135,6 +137,7 @@ public class CharScript : MonoBehaviour {
 			if (Input.GetButton ("Jump") && falling == false) {
 				grav = 16f;
 				falling = true;
+                audio.PlayOneShot(jumpSound);
 			}
 			
 			if (falling) {
