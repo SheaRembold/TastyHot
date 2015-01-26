@@ -9,6 +9,7 @@ public class CharScript : MonoBehaviour {
     public ParticleSystem ssParticle;
 
     public AudioClip jumpSound;
+    public AudioClip[] hitSounds;
 
 	// Use this for initialization
 	void Start () {
@@ -149,7 +150,7 @@ public class CharScript : MonoBehaviour {
 			if (Input.GetButton ("Jump") && falling == false) {
 				grav = 16f;
 				falling = true;
-                audio.PlayOneShot(jumpSound);
+                //audio.PlayOneShot(jumpSound);
 			}
 			
 			if (falling) {
@@ -195,11 +196,13 @@ public class CharScript : MonoBehaviour {
 				health--;
 				noHit = 6;
 				invinc = true;
-				Debug.Log ("I'm hit!  "+health);
+                Debug.Log("I'm hit!  " + health);
+                audio.PlayOneShot(hitSounds[Random.Range(0, hitSounds.Length)]);
 			}
 
 			if(hit.collider.tag == "Lava"){
-				health -= 3;
+                health -= 3;
+                audio.PlayOneShot(hitSounds[Random.Range(0, hitSounds.Length)]);
 			}
 
 			if(hit.collider.tag == "Coin"){
